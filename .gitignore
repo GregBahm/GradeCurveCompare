@@ -1,0 +1,15 @@
+/GradeCurveUnity/Library/
+/GradeCurveUnity/Temp/
+/GradeCurveUnity/Holotaire.csproj
+/GradeCurveUnity/Holotaire.Editor.csproj
+/GradeCurveUnity/Holotaire.Plugins.csproj
+/GradeCurveUnity/Holotaire.sln
+/GradeCurveUnity/Packages/
+/GradeCurveUnity/.vs/
+/.vs/
+/GradeCurveUnity/obj/
+/GradeCurveUnity/Assembly-CSharp.csproj
+/GradeCurveUnity/Unity.PackageManagerUI.Editor.csproj
+/GradeCurveUnity/UnityEditor.StandardEvents.csproj
+/GradeCurveUnity/UnityPackageManager/
+*.sln
