@@ -28,6 +28,7 @@
 				float3 objSpace : TEXCOORD1;
 				float3 modifiedObjSpace : TEXCOORD2;
 				float4 vertex : SV_POSITION;
+				float height : TEXCOORD3;
 			};
 
 			float _A;
@@ -58,20 +59,23 @@
 				v2f o;
 				o.objSpace = v.vertex + .5;
 
-				float heightStartLerp = saturate(o.objSpace.y * 2);
-				float heightEndLerp = saturate(o.objSpace.y * 2 - 1);
-				float height = GetCurvePoint(o.objSpace.y);
-				v.vertex.z = (o.objSpace.z) * height;
+				float heightStartLerp = saturate(o.objSpace.z * 2);
+				float heightEndLerp = saturate(o.objSpace.z * 2 - 1);
+				float height = GetCurvePoint(o.objSpace.z);
+				v.vertex.y = (o.objSpace.y) * height;
 				o.vertex = UnityObjectToClipPos(v.vertex);
 				o.modifiedObjSpace = v.vertex + .5;
 				o.uv = v.uv;
+				o.height = height;
 				return o;
 			}
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float3 col = lerp(float3(0, 1, 0), float3(1, 0, 0), i.objSpace.y);
-				col *= i.modifiedObjSpace.z / 20;
+				float3 col = lerp(float3(0, 1, 0), float3(1, 0, 0), i.objSpace.z);
+				col *= pow(i.height, 2.5) / 5000;
+				float stripe = pow(i.objSpace.y,30);
+				col = lerp(col, col * 2, stripe);
 				return float4(col, 1);
 			}
 			ENDCG

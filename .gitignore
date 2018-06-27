@@ -13,3 +13,4 @@
 /GradeCurveUnity/UnityEditor.StandardEvents.csproj
 /GradeCurveUnity/UnityPackageManager/
 *.sln
+*.csproj
